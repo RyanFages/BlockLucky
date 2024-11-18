@@ -6,6 +6,7 @@
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
+  position: relative;
 }
 
 .container {
@@ -43,9 +44,19 @@
   cursor: pointer;
 }
 
+.connect-wallet {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
 .bottom-box {
-  width: 70%; /* Ajustez la largeur selon vos besoins */
-  padding: 150px;
+  width: 90%; /* Augmentez la largeur du cadre */
+  height: 40%; /* Augmentez la hauteur du cadre */
+  padding: 20px;
   background-color: #ddd;
   text-align: center;
   border-top: 2px solid #000;
@@ -59,4 +70,14 @@
 .info-display {
   margin-top: 10px;
   font-size: 1.2em;
+}
+
+.lottery-info {
+  list-style-type: none;
+  padding: 0;
+  text-align: left; /* Aligne la liste à gauche */
+}
+
+.lottery-info li {
+  margin: 20px 0; /* Ajoute de l'espace entre les éléments */
 }
