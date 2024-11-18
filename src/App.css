@@ -53,13 +53,13 @@
   cursor: pointer;
 }
 
-.bottom-box {
-  width: 90%; /* Augmentez la largeur du cadre */
-  height: 40%; /* Augmentez la hauteur du cadre */
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%; /* Augmentez la largeur du conteneur */
+  height: 40%; /* Augmentez la hauteur du conteneur */
   padding: 20px;
   background-color: #ddd;
-  text-align: center;
-  border-top: 2px solid #000;
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -67,17 +67,49 @@
   border-radius: 15px; /* Ajoute des bords arrondis */
 }
 
-.info-display {
-  margin-top: 10px;
-  font-size: 1.2em;
+.bottom-box {
+  width: 70%; /* Prend 70% de l'espace disponible */
+  padding: 20px;
+  background-color: #ddd;
+  text-align: left; /* Aligne le texte à gauche */
+  border-top: 2px solid #000;
+  border-radius: 15px; /* Ajoute des bords arrondis */
 }
 
 .lottery-info {
-  list-style-type: none;
-  padding: 0;
-  text-align: left; /* Aligne la liste à gauche */
+  width: 100%; /* Prend tout l'espace disponible */
 }
 
-.lottery-info li {
-  margin: 20px 0; /* Ajoute de l'espace entre les éléments */
+.tickets {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux boutons de passer à la ligne suivante si nécessaire */
+  gap: 10px; /* Ajoute de l'espace entre les boutons */
+}
+
+.ticket-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ticket-button:hover {
+  background-color: #0056b3;
+}
+
+.extra-info-box {
+  width: 25%; /* Prend 25% de l'espace disponible */
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Ajoute des bords arrondis */
+  text-align: center; /* Centre le texte */
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0; /* Ajoute de l'espace autour des lignes de séparation */
 }

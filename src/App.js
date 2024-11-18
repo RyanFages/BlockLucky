@@ -12,8 +12,12 @@ function App() {
   const [info, setInfo] = useState(''); // État pour le contenu du cadre
   const [isConnected, setIsConnected] = useState(false);
   const [userAddress, setUserAddress] = useState('');
-  const [ticketsOwned, setTicketsOwned] = useState(0); // Tickets possédés
-  const [ticketPrice, setTicketPrice] = useState(0.1); // Prix par ticket en ETH
+  const [ticketsOwned, setTicketsOwned] = useState([
+    { number: 1, price: 0.1 },
+    { number: 3, price: 0.2 },
+    { number: 5, price: 0.3 }
+  ]); // Liste des tickets possédés avec prix
+  const [selectedTicket, setSelectedTicket] = useState(null); // État pour le ticket sélectionné
 
   useEffect(() => {
     const targetDate = new Date('2024-12-01T00:00:00'); // Remplacez par la date future souhaitée
@@ -53,6 +57,7 @@ function App() {
   const days = Math.floor(remainingTime / (60 * 60 * 24));
   const hours = Math.floor((remainingTime % (60 * 60 * 24)) / (60 * 60));
   const minutes = Math.floor((remainingTime % (60 * 60)) / 60);
+  const seconds = remainingTime % 60;
 
   const handleConversion = () => {
     setIsEuro(!isEuro);
@@ -78,37 +83,54 @@ function App() {
     }
   };
 
+  const handleTicketClick = (ticket) => {
+    setSelectedTicket(ticket);
+  };
+
+  const totalTickets = ticketsOwned.length;
+
   return (
     <div className="App">
       <div className="container">
         <img src={logo} alt="Logo" className="logo" />
         <div className="sum">
-          Somme: {displaySum}
+          Somme: {displaySum} {isEuro ? 'EUR' : 'ETH'}
           <button className="convert-button" onClick={handleConversion}>
-          {isEuro ? 'EUR' : 'ETH'}
+            Convertir
           </button>
         </div>
         <div className="counter">
-          {days} jours, {hours} heures, {minutes} minutes,
+          {days} jours, {hours} heures, {minutes} minutes, {seconds} secondes
         </div>
       </div>
       <button className="connect-wallet" onClick={connectWallet}>
         {isConnected ? `Connected: ${userAddress}` : 'Connect Wallet'}
       </button>
-      <div className="bottom-box">
-        <ul className="lottery-info">
-          <li>Pot de la loterie: {sum} ETH</li>
-          <li>Tickets possédés: {ticketsOwned}</li>
-          <li>Prix par ticket: {ticketPrice} ETH</li>
-        </ul>
-        <input
-          type="text"
-          placeholder="Ajouter des informations"
-          value={info}
-          onChange={(e) => setInfo(e.target.value)}
-        />
-        <div className="info-display">
-          {info}
+      <div className="bottom-container">
+        <div className="bottom-box">
+          <div className="lottery-info">
+            <p>Pot de la loterie: {sum} ETH</p>
+            <hr />
+            <p>Tickets possédés: ziqoshd</p>
+            <hr />
+            <div className="tickets">
+              {ticketsOwned.map((ticket) => (
+                <button key={ticket.number} className="ticket-button" onClick={() => handleTicketClick(ticket)}>
+                  {ticket.price} ETH <br></br> Achat de {ticket.number} tickets
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="extra-info-box">
+          {selectedTicket !== null ? (
+            <div>
+              <p>Numéro de ticket: {selectedTicket.number}</p>
+              <p>Prix: {selectedTicket.price} ETH</p>
+            </div>
+          ) : (
+            <p>Sélectionnez un ticket pour voir les détails</p>
+          )}
         </div>
       </div>
     </div>
