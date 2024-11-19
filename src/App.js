@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
 import './App.css';
+import Snowfall from 'react-snowfall';
 import logo from './Picture/logo.png'; // Assurez-vous que le chemin est correct
 
 function App() {
@@ -63,7 +64,11 @@ function App() {
     setIsEuro(!isEuro);
   };
 
-  const displaySum = isEuro ? (sum * conversionRate).toFixed(2) : sum;
+  const formatEuro = (amount) => {
+    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount);
+  };
+
+  const displaySum = isEuro ? formatEuro(sum * conversionRate) : `${sum} ETH`;
 
   const connectWallet = async () => {
     console.log(window.ethereum); // Vérifiez la disponibilité de window.ethereum
@@ -91,16 +96,17 @@ function App() {
 
   return (
     <div className="App">
+      <Snowfall />
       <div className="container">
         <img src={logo} alt="Logo" className="logo" />
         <div className="sum">
-          Somme: {displaySum} {isEuro ? 'EUR' : 'ETH'}
+          <h1>{displaySum} {isEuro}</h1>
           <button className="convert-button" onClick={handleConversion}>
-            Convertir
+          {isEuro ? 'EUR' : 'ETH'}
           </button>
         </div>
         <div className="counter">
-          {days} jours, {hours} heures, {minutes} minutes, {seconds} secondes
+          {days} J, {hours} H, {minutes} min, {seconds} sec
         </div>
       </div>
       <button className="connect-wallet" onClick={connectWallet}>
