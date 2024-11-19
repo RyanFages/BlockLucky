@@ -1,7 +1,23 @@
-.App {
+.Home {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  background-image: url('./Picture/Background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-color: #003F2D;
+}
+
+.Winner{
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
@@ -19,13 +35,10 @@ button{
   border-radius: 10px;
   color: #ffffff;
   background-color: #406C35;
-  /* background-color: #018667; */
-  /* background-color: #007bff; */
   cursor: pointer;
 }
 
 button:hover {
-  /* background-color: #0056b3; */
   background-color: #018667;
 }
 
@@ -52,7 +65,7 @@ button:hover {
 .sum {
   align-items: center;
   font-size: 2em;
-  margin-top: 10px;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +94,7 @@ button:hover {
   padding: 20px;
   background-color: #ddd;
   position: fixed;
-  bottom: 0;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 15px; /* Ajoute des bords arrondis */
@@ -107,8 +120,15 @@ button:hover {
 }
 
 .ticket-button {
+  font-size: 1em;
   padding: 10px;
   border: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0; /* Ajoute de l'espace autour des lignes de séparation */
 }
 
 .extra-info-box {
@@ -118,10 +138,43 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 10px; /* Ajoute des bords arrondis */
   text-align: center; /* Centre le texte */
+  position: relative;
 }
 
-hr {
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 20px 0; /* Ajoute de l'espace autour des lignes de séparation */
+.buy-button {
+  margin-top: 0px; /* Ajoute de l'espace au-dessus du bouton */
+  padding: 10px 37%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  position: absolute;
+  bottom: 10px; /* Ajustez selon vos besoins */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+}
+
+.ticket-price{
+  bottom: 100%;
+}
+.buy-button:hover {
+  background-color: #218838;
+}
+h1{
+  color: white;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-winner{
+  color: white;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
