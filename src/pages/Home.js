@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import axios from "axios";
 import "../App.css";
@@ -6,6 +7,7 @@ import Snowfall from "react-snowfall";
 
 function Home() {
   const [remainingTime, setRemainingTime] = useState(0);
+  const navigate = useNavigate();
   const [sum, setSum] = useState(1000); // Somme donnée en ETH
   const [isEuro, setIsEuro] = useState(false); // État pour savoir si la somme est en euros
   const [conversionRate, setConversionRate] = useState(0); // Taux de conversion ETH -> EUR
@@ -21,15 +23,19 @@ function Home() {
   const [randomNumbers, setRandomNumbers] = useState([]); // Liste des numéros aléatoires
 
   useEffect(() => {
-    const targetDate = new Date("2024-11-01T00:00:00"); // Remplacez par la date future souhaitée
+    const targetDate = new Date("2024-12-01T00:00:00"); // Remplacez par la date future souhaitée
     const interval = setInterval(() => {
       const now = new Date();
       const timeRemaining = Math.max(0, Math.floor((targetDate - now) / 1000)); // Temps restant en secondes
       setRemainingTime(timeRemaining);
+
+    if (timeRemaining === 0) {
+        navigate('/winner'); // Redirige vers la page "À propos" lorsque le timer atteint 0
+      }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     const fetchConversionRate = async () => {
@@ -172,7 +178,7 @@ function Home() {
           <button className="buy-button" onClick={handleBuyTickets}>Acheter</button>
         </div>
         ) : (
-          <p>Sélectionnez un ticket pour voir les détails</p>
+          <p></p>
         )}
       </div>
     </div>

@@ -112,9 +112,9 @@ button:hover {
 .bottom-box {
   width: 70%; /* Prend 70% de l'espace disponible */
   padding: 20px;
-  background-color: #ddd;
+  background-color: #003F2D;
+  color: white;
   text-align: left; /* Aligne le texte à gauche */
-  border-top: 2px solid #000;
   border-radius: 15px; /* Ajoute des bords arrondis */
 }
 
@@ -136,14 +136,15 @@ button:hover {
 
 hr {
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #E8D8AA;
   margin: 20px 0; /* Ajoute de l'espace autour des lignes de séparation */
 }
 
 .extra-info-box {
+  color: white;
   width: 25%; /* Prend 25% de l'espace disponible */
-  padding: 10px;
-  background-color: #fff;
+  margin-left: 10px;
+  background-color: #003F2D;
   border: 1px solid #ccc;
   border-radius: 10px; /* Ajoute des bords arrondis */
   text-align: center; /* Centre le texte */
