@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
 import './App.css';
-import logo from './Picture/logo.png';
+import logo from './Picture/logo.png'; // Assurez-vous que le chemin est correct
 
 function App() {
   const [remainingTime, setRemainingTime] = useState(0);
@@ -17,7 +17,7 @@ function App() {
     { number: 5, price: 0.3 }
   ]); // Liste des tickets possédés avec prix
   const [selectedTicket, setSelectedTicket] = useState(null); // État pour le ticket sélectionné
-  const [setRandomNumbers] = useState([]); // État pour les chiffres aléatoires
+  const [randomNumbers, setRandomNumbers] = useState([]); // État pour les chiffres aléatoires
 
   useEffect(() => {
     const targetDate = new Date('2024-12-01T00:00:00'); // Remplacez par la date future souhaitée
