@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
 import './App.css';
-import logo from './Picture/logo.png'; // Assurez-vous que le chemin est correct
+import logo from './Picture/logo.png';
 
 function App() {
   const [remainingTime, setRemainingTime] = useState(0);
-  const [sum, setSum] = useState(1000); // Somme donnée en ETH
+  const [sum] = useState(1000); // Somme donnée en ETH
   const [isEuro, setIsEuro] = useState(false); // État pour savoir si la somme est en euros
   const [conversionRate, setConversionRate] = useState(0); // Taux de conversion ETH -> EUR
-  const [info, setInfo] = useState(''); // État pour le contenu du cadre
   const [isConnected, setIsConnected] = useState(false);
   const [userAddress, setUserAddress] = useState('');
-  const [ticketsOwned, setTicketsOwned] = useState([
+  const [ticketsOwned] = useState([
     { number: 1, price: 0.1 },
     { number: 3, price: 0.2 },
     { number: 5, price: 0.3 }
   ]); // Liste des tickets possédés avec prix
   const [selectedTicket, setSelectedTicket] = useState(null); // État pour le ticket sélectionné
-  const [randomNumbers, setRandomNumbers] = useState([]); // État pour les chiffres aléatoires
+  const [setRandomNumbers] = useState([]); // État pour les chiffres aléatoires
 
   useEffect(() => {
     const targetDate = new Date('2024-12-01T00:00:00'); // Remplacez par la date future souhaitée
@@ -108,8 +107,6 @@ function App() {
     }
   };
 
-  const totalTickets = ticketsOwned.length;
-
   return (
     <div className="App">
       <div className="container">
@@ -145,13 +142,8 @@ function App() {
         </div>
         {selectedTicket !== null ? (
   <div className="extra-info-box">
-    <p>Numéro de ticket: {selectedTicket.number}</p>
-    <p>Ton Ticket:</p>
-    <ul>
-      {randomNumbers.map((num, index) => (
-        <li key={index}>{num}</li>
-      ))}
-    </ul>
+    <p>Nombre d'entrer:</p>
+    <h1>{selectedTicket.number}</h1>
     <div className="ticket-price">Prix: {selectedTicket.price} ETH</div>
     <button className="buy-button" onClick={handleBuyTickets}>Acheter</button>
   </div>

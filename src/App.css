@@ -131,7 +131,11 @@ hr {
 }
 
 .ticket-price{
-  bottom: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  bottom: 25%;
 }
 .buy-button:hover {
   background-color: #218838;
