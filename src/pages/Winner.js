@@ -3,6 +3,7 @@ import { BrowserProvider, Contract, formatEther } from "ethers";
 import axios from "axios";
 import "../App.css";
 import Snowfall from "react-snowfall";
+
 import lotteryABI from "../abis/lotteryABI.json"; // Import de l'ABI
 
 const CONTRACT_ADDRESS = "0x032aFa7360A24cF2b56f159314e01aaCf12136DE"; // Remplacez par l'adresse de votre contrat déployé
@@ -105,9 +106,13 @@ function Winner() {
           </button>
         </div>
       </div>
-      <h1>Bravo au gagnant</h1>
-      <p className='ticket-winner'>Adresse du gagnant : {winnerAddress}</p>
-      <p className='ticket-winner'>Montant gagné : {displaySum}</p>
+      
+      {/* Regroupement des éléments dans un div centré */}
+      <div className="winner-info">
+        <h1>Bravo au gagnant</h1>
+        <p className='ticket-winner'>Adresse du gagnant : {winnerAddress}</p>
+        <p className='ticket-winner'>Montant gagné : {displaySum}</p>
+      </div>
     </div>
   );
 }

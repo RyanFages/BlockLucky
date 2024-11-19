@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BrowserProvider, Contract, parseEther, formatEther } from "ethers"; // formatEther ajouté ici
+
 import axios from "axios";
 import "../App.css";
 import Snowfall from "react-snowfall";
+
 import lotteryABI from "../abis/lotteryABI.json"; // Import de l'ABI
 
 const CONTRACT_ADDRESS = "0x032aFa7360A24cF2b56f159314e01aaCf12136DE"; // Remplacez par l'adresse de votre contrat déployé
@@ -198,6 +200,10 @@ function Home() {
     setRandomNumbers(randomNums);
   };
 
+  const handleTutorialClick = () => {
+    window.open("https://obvious-hisser-d97.notion.site/TUTORIEL-Participer-la-lotterie-EtherBay-en-4-tapes-143b788a28b88048abb6d2eae365f9e1?pvs=4", "_blank");
+  };
+
   const days = Math.floor(remainingTime / (60 * 60 * 24));
   const hours = Math.floor((remainingTime % (60 * 60 * 24)) / (60 * 60));
   const minutes = Math.floor((remainingTime % (60 * 60)) / 60);
@@ -233,9 +239,14 @@ function Home() {
         </div>
       </div>
       <div className="title">ETHERBAY</div>
-      <button className="connect-wallet" onClick={connectWallet}>
-        {isConnected ? `Connected: ${userAddress}` : "Connect Wallet"}
-      </button>
+      <div className="buttons-container">
+        <button className="connect-wallet" onClick={connectWallet}>
+          {isConnected ? `Connecté : ${userAddress}` : "Connecter mon wallet"}
+        </button>
+        <button className="tutorial-button" onClick={handleTutorialClick}>
+          Voir le tutoriel
+        </button>
+      </div>
       <div className="bottom-container">
         <div className="bottom-box">
           <div className="lottery-info">
