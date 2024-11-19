@@ -140,6 +140,7 @@ function Home() {
           {days} J, {hours} H, {minutes} min, {seconds} sec
         </div>
       </div>
+      <div className="title">ETHERBAY</div>
       <button className="connect-wallet" onClick={connectWallet}>
         {isConnected ? `Connected: ${userAddress}` : "Connect Wallet"}
       </button>
