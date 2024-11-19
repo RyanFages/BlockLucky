@@ -18,6 +18,7 @@ function App() {
     { number: 5, price: 0.3 }
   ]); // Liste des tickets possédés avec prix
   const [selectedTicket, setSelectedTicket] = useState(null); // État pour le ticket sélectionné
+  const [randomNumbers, setRandomNumbers] = useState([]); // État pour les chiffres aléatoires
 
   useEffect(() => {
     const targetDate = new Date('2024-12-01T00:00:00'); // Remplacez par la date future souhaitée
@@ -84,7 +85,27 @@ function App() {
   };
 
   const handleTicketClick = (ticket) => {
+    let numCodes;
+    if (ticket.number === 1) {
+      numCodes = 1;
+    } else if (ticket.number === 3) {
+      numCodes = 3;
+    } else if (ticket.number === 5) {
+      numCodes = 5;
+    }
+
+    const randomNums = Array.from({ length: numCodes }, () => Math.floor(Math.random() * 1000) + 1);
     setSelectedTicket(ticket);
+    setRandomNumbers(randomNums);
+  };
+
+  const handleBuyTickets = () => {
+    if (selectedTicket) {
+      alert(`Vous avez acheté ${selectedTicket.number} ticket(s) pour ${selectedTicket.price} ETH`);
+      // Ajoutez ici la logique pour traiter l'achat des tickets
+    } else {
+      alert('Veuillez sélectionner un ticket avant d\'acheter.');
+    }
   };
 
   const totalTickets = ticketsOwned.length;
@@ -111,29 +132,35 @@ function App() {
           <div className="lottery-info">
             <p>Pot de la loterie: {sum} ETH</p>
             <hr />
-            <p>Tickets possédés: ziqoshd</p>
+            <p>Tickets possédés: blablablaici</p>
             <hr />
             <div className="tickets">
               {ticketsOwned.map((ticket) => (
                 <button key={ticket.number} className="ticket-button" onClick={() => handleTicketClick(ticket)}>
-                  {ticket.price} ETH <br></br> Achat de {ticket.number} tickets
+                  Ticket #{ticket.number} - {ticket.price} ETH
                 </button>
               ))}
             </div>
           </div>
         </div>
-        <div className="extra-info-box">
-          {selectedTicket !== null ? (
-            <div>
-              <p>Numéro de ticket: {selectedTicket.number}</p>
-              <p>Prix: {selectedTicket.price} ETH</p>
-            </div>
-          ) : (
-            <p>Sélectionnez un ticket pour voir les détails</p>
-          )}
+        {selectedTicket !== null ? (
+  <div className="extra-info-box">
+    <p>Numéro de ticket: {selectedTicket.number}</p>
+    <p>Ton Ticket:</p>
+    <ul>
+      {randomNumbers.map((num, index) => (
+        <li key={index}>{num}</li>
+      ))}
+    </ul>
+    <div className="ticket-price">Prix: {selectedTicket.price} ETH</div>
+    <button className="buy-button" onClick={handleBuyTickets}>Acheter</button>
+  </div>
+) : (
+  <p>Sélectionnez un ticket pour voir les détails</p>
+)}
+
         </div>
       </div>
-    </div>
   );
 }
 

@@ -61,7 +61,7 @@
   padding: 20px;
   background-color: #ddd;
   position: fixed;
-  bottom: 0;
+  bottom: 30px; /* Ajustez pour laisser de la place pour le bouton "Acheter" */
   left: 50%;
   transform: translateX(-50%);
   border-radius: 15px; /* Ajoute des bords arrondis */
@@ -99,6 +99,12 @@
   background-color: #0056b3;
 }
 
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0; /* Ajoute de l'espace autour des lignes de séparation */
+}
+
 .extra-info-box {
   width: 25%; /* Prend 25% de l'espace disponible */
   padding: 10px;
@@ -106,10 +112,27 @@
   border: 1px solid #ccc;
   border-radius: 10px; /* Ajoute des bords arrondis */
   text-align: center; /* Centre le texte */
+  position: relative;
 }
 
-hr {
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 20px 0; /* Ajoute de l'espace autour des lignes de séparation */
+.buy-button {
+  margin-top: 0px; /* Ajoute de l'espace au-dessus du bouton */
+  padding: 10px 37%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  position: absolute;
+  bottom: 10px; /* Ajustez selon vos besoins */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ticket-price{
+  bottom: 100%;
+}
+.buy-button:hover {
+  background-color: #218838;
 }
